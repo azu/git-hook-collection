@@ -4,13 +4,9 @@ my git-hooks.
 
 ## Installation
 
-Use [mestral/mestral](https://github.com/mestral/mestral "mestral/mestral").
+Install by [rosylilly/git-hook](https://github.com/rosylilly/git-hook "rosylilly/git-hook").
 
-
-
-## Usage
-
-- [ ] Write usage instructions
+* [Lightweight git hook management tool その名も git-hook を作りました - 鳩舎](http://rosylilly.hatenablog.com/entry/2012/07/30/082748 "Lightweight git hook management tool その名も git-hook を作りました - 鳩舎")
 
 ## Contributing
 
