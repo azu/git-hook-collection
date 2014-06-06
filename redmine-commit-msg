@@ -1,0 +1,29 @@
+#!/bin/bash
+
+
+function is_issued() { # git-issueの設定があるか
+  ISSUE_TYPE=$(git config issue.type 2>/dev/null)
+  if [ "$ISSUE_TYPE" != "" ]; then
+      return 0
+  else
+      return 1
+  fi
+}
+
+if [ is_issued == 0 ]; then
+  exit
+fi
+
+BRANCH=$(git symbolic-ref HEAD)
+
+grep '^refs:' $1
+if [ $? -eq 0 ]; then
+  exit
+fi
+ISSUE_URL=$(git config issue.url)
+ISSUE_ID=$(echo $BRANCH | sed -e 's/^.*\/id\/\([0-9]*\)$/\1/')
+if [ "$ISSUE_ID" != "$BRANCH" ]; then
+  echo "Auto append: $ISSUE"
+  echo -e "\n"　>> $1
+  echo -n "refs: ${ISSUE_URL}issues/${ISSUE_ID}" >> $1
+fi
